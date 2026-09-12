@@ -89,7 +89,14 @@ h1 span { color: #454545; }
 .work-detail { display: grid; gap: 1rem; padding: 0 0 2rem; }
 .work-meta { font-size: .875rem; }
 .work-meta span { color: var(--quiet); font-size: .8125rem; display: block; margin-top: .2rem; }
+.work-body { min-width: 0; }
 .work-body > p { color: var(--muted); max-width: 65ch; }
+.work-visual { margin-bottom: 1.5rem; }
+.work-visual img { display: block; width: 100%; max-width: 705px; height: auto; object-fit: contain; background: var(--surface); }
+.work-visual figcaption { margin-top: .75rem; color: var(--muted); font-size: .8125rem; }
+.work-visual-photo img { max-width: 100%; border-radius: var(--radius-ui); }
+.work-visual .visual-links { display: flex; flex-wrap: wrap; gap: .25rem 1.25rem; margin-top: .25rem; }
+.work-visual .visual-links a { display: inline-flex; align-items: center; min-height: 44px; min-width: 44px; }
 .work-body > p + p { margin-top: 1rem; }
 .skill-tags { list-style: none; display: flex; flex-wrap: wrap; gap: .5rem; padding: 0; margin: 1.25rem 0 0; }
 .skill-tags li { font-size: .75rem; border: 1px solid var(--line); border-radius: var(--radius-ui); padding: .25rem .625rem; color: var(--muted); background: var(--surface); }
@@ -102,6 +109,28 @@ h1 span { color: #454545; }
 .career-item h3 { font-size: 1.125rem; line-height: 1.4; letter-spacing: -.015em; }
 .career-company { color: var(--muted); font-size: .875rem; margin-top: .25rem; }
 .career-description { color: var(--muted); font-size: .875rem; margin-top: .875rem; max-width: 60ch; }
+.exploration-topic { font-size: 1rem; font-weight: 500; }
+.exploration-layout { display: grid; gap: 2rem; }
+.exploration-layout > div { min-width: 0; }
+.exploration-copy > p { color: var(--muted); max-width: 58ch; }
+.exploration-copy > p + p { margin-top: 1rem; }
+.exploration-topics { margin-top: 1.75rem; }
+.exploration-topics > div { padding-block: 1rem; border-top: 1px solid var(--line); }
+.exploration-topics dt { font-weight: 500; font-size: .9375rem; }
+.exploration-topics dd { margin-top: .375rem; color: var(--muted); font-size: .875rem; max-width: 55ch; }
+.exploration-aside { display: grid; align-content: start; gap: 1.5rem; }
+.agent-workflow { container: agent-workflow / inline-size; padding: 1.25rem; border: 1px solid var(--line); border-radius: var(--radius-panel); background: var(--surface); }
+.agent-workflow figcaption { font-size: .9375rem; font-weight: 500; }
+.agent-steps { display: grid; gap: 1.5rem; margin: 1.25rem 0 0; padding: 0; list-style: none; }
+.agent-steps li { position: relative; padding: .75rem 1rem; border: 1px solid var(--line); border-radius: var(--radius-ui); background: var(--paper); }
+.agent-steps strong { display: block; font-size: .9375rem; font-weight: 500; }
+.agent-steps li > span:not(.agent-arrow) { display: block; margin-top: .125rem; font-size: .8125rem; color: var(--muted); }
+.agent-arrow { position: absolute; bottom: -1.5rem; left: 50%; transform: translateX(-50%); height: 1.5rem; line-height: 1.5rem; color: var(--muted); }
+.agent-steps .agent-review { background: #f0f0f0; border-color: var(--control-line); }
+.agent-workflow-note { margin-top: 1.25rem; color: var(--muted); font-size: .8125rem; }
+.exploration-example { border-top: 1px solid var(--line); padding-top: 1rem; }
+.exploration-example h3 { font-size: 1rem; line-height: 1.5; }
+.exploration-example p { margin-top: .5rem; color: var(--muted); font-size: .875rem; max-width: 55ch; }
 .practice-panel { display: grid; gap: 2rem; border-radius: var(--radius-panel); background: #f0f0f0; padding: 1.5rem; }
 .practice-intro { color: var(--muted); margin-top: 1.25rem; max-width: 33ch; }
 .tool-list > div + div { margin-top: 1.375rem; }
@@ -141,6 +170,9 @@ a:active { opacity: .8; }
   .contact-content { grid-template-columns: 1fr 1fr; gap: 3rem; }
   .contact-links { align-items: flex-end; }
   .contact { padding-bottom: 4rem; }
+}
+@media (min-width: 1000px) {
+  .exploration-layout { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 3rem; align-items: start; }
 }
 @container experience-map (min-width: 280px) {
   .map-foundations { grid-template-columns: repeat(2, minmax(0, 1fr)); }

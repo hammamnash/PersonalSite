@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const career = [
   {
     period: "Dec 2023 to present",
@@ -87,21 +89,39 @@ export default function Home() {
               <summary><span className="work-title">Making enterprise architecture usable</span><span className="work-index">01</span><span className="expand-mark" aria-hidden="true" /></summary>
               <div className="work-detail">
                 <div className="work-meta"><p>ATD Solution Indonesia</p><span>Enterprise architecture consulting</span></div>
-                <div className="work-body"><p>I develop enterprise architecture portfolios using TOGAF practices and ArchiMate modelling, and configure and administer the tools that hold them.</p><p>The work includes client coaching, solution demonstrations, and collaboration with colleagues across Malaysia, Singapore, Hong Kong, and Australia. My client experience spans government, manufacturing, mining, and ICT, among other sectors.</p><ul className="skill-tags" aria-label="Enterprise architecture methods"><li>TOGAF</li><li>ArchiMate</li><li>EA tools</li></ul></div>
+                <div className="work-body">
+                  <figure className="work-visual">
+                    <Image src="/images/experience/togaf-archimate-core.png" alt="TOGAF ADM cycle with requirements management at its centre and ArchiMate business, application, and technology layers mapped to phases B, C, and D." width={705} height={596} unoptimized />
+                    <figcaption>
+                      <p>TOGAF ADM and ArchiMate Core. Framework reference, not an ATD client deliverable.</p>
+                      <div className="visual-links"><a href="https://www.archimetric.com/id/quick-learning-archimate-part-1-core-concepts/">Source: Archimetric</a><a href="/images/experience/togaf-archimate-core.png">View full-size diagram</a></div>
+                    </figcaption>
+                  </figure>
+                  <p>I develop enterprise architecture portfolios using TOGAF practices and ArchiMate modelling, and configure and administer the tools that hold them.</p><p>The work includes client coaching, solution demonstrations, and collaboration with colleagues across Malaysia, Singapore, Hong Kong, and Australia. My client experience spans government, manufacturing, mining, and ICT, among other sectors.</p><ul className="skill-tags" aria-label="Enterprise architecture methods"><li>TOGAF</li><li>ArchiMate</li><li>EA tools</li></ul></div>
               </div>
             </details>
             <details className="work-item">
               <summary><span className="work-title">Warehouse management, built around its users</span><span className="work-index">02</span><span className="expand-mark" aria-hidden="true" /></summary>
               <div className="work-detail">
                 <div className="work-meta"><p>Social Bella Indonesia</p><span>Product management</span></div>
-                <div className="work-body"><p>I managed product work for Sociolla&apos;s in-house warehouse management system: gathering requirements, writing PRDs, planning sprints, testing changes, and coordinating releases.</p><p>User interviews and testing sessions informed improvements. I also worked on the end-to-end implementation in Vietnam, collaborating with engineering, business, and product teams across Indonesia, Vietnam, and India.</p><ul className="skill-tags" aria-label="Product methods"><li>Requirements &amp; PRDs</li><li>User testing</li><li>Release planning</li></ul></div>
+                <div className="work-body">
+                  <figure className="work-visual work-visual-photo">
+                    <Image src="/images/experience/warehouse-product-management.webp" alt="A warehouse associate with a barcode scanner and a product specialist reviewing a packing workflow on a tablet." width={1024} height={576} loading="lazy" unoptimized />
+                    <figcaption>AI-generated illustration of warehouse collaboration, not a Social Bella facility or its staff.</figcaption>
+                  </figure>
+                  <p>I managed product work for Sociolla&apos;s in-house warehouse management system: gathering requirements, writing PRDs, planning sprints, testing changes, and coordinating releases.</p><p>User interviews and testing sessions informed improvements. I also worked on the end-to-end implementation in Vietnam, collaborating with engineering, business, and product teams across Indonesia, Vietnam, and India.</p><ul className="skill-tags" aria-label="Product methods"><li>Requirements &amp; PRDs</li><li>User testing</li><li>Release planning</li></ul></div>
               </div>
             </details>
             <details className="work-item">
               <summary><span className="work-title">Turning operational data into useful reporting</span><span className="work-index">03</span><span className="expand-mark" aria-hidden="true" /></summary>
               <div className="work-detail">
                 <div className="work-meta"><p>Social Bella &amp; Ternaknesia</p><span>Inventory and data analytics</span></div>
-                <div className="work-body"><p>I built reporting pipelines and dashboards, automated repetitive spreadsheet work with Power Query, and investigated inventory discrepancies in warehouse and ERP systems.</p><p>At Ternaknesia, I also worked on customer segmentation, market basket analysis, and web scraping for price comparisons. That operational background still shapes the questions I ask when reviewing business and technology requirements.</p><ul className="skill-tags" aria-label="Analytics tools"><li>Power Query</li><li>Looker Studio</li><li>Python &amp; SQL</li></ul></div>
+                <div className="work-body">
+                  <figure className="work-visual work-visual-photo">
+                    <Image src="/images/experience/inventory-data-analytics-v2.webp" alt="An analyst working at a keyboard beside a light-themed dashboard and a notebook with a workflow sketch." width={1024} height={576} loading="lazy" unoptimized />
+                    <figcaption>AI-generated illustration of analytical work, not a real employer dashboard or a portrait of me.</figcaption>
+                  </figure>
+                  <p>I built reporting pipelines and dashboards, automated repetitive spreadsheet work with Power Query, and investigated inventory discrepancies in warehouse and ERP systems.</p><p>At Ternaknesia, I also worked on customer segmentation, market basket analysis, and web scraping for price comparisons. That operational background still shapes the questions I ask when reviewing business and technology requirements.</p><ul className="skill-tags" aria-label="Analytics tools"><li>Power Query</li><li>Looker Studio</li><li>Python &amp; SQL</li></ul></div>
               </div>
             </details>
           </div>
@@ -116,6 +136,39 @@ export default function Home() {
               </li>
             ))}
           </ol>
+        </section>
+
+        <section className="exploration section wrap" id="exploring-ai" aria-labelledby="exploration-heading">
+          <div className="section-heading">
+            <div><p className="section-label">Currently exploring</p><p className="exploration-topic">Agentic AI</p></div>
+            <h2 id="exploration-heading">Putting AI agents to practical use.</h2>
+          </div>
+          <div className="exploration-layout">
+            <div className="exploration-copy">
+              <p>I&apos;m interested in AI agents that can work with tools, carry context between steps, and help complete tasks beyond a chat response.</p>
+              <p>My enterprise architecture background shapes the questions I bring to this: where agents fit into a business process, what information they need, which systems they should access, and where people should stay in control.</p>
+              <dl className="exploration-topics">
+                <div><dt>Hands-on experimentation</dt><dd>Exploring AI-assisted development and reusable instructions through personal projects.</dd></div>
+                <div><dt>Enterprise questions</dt><dd>Exploring how permissions, human review, and traceable actions can make agent workflows useful in an organizational setting.</dd></div>
+              </dl>
+            </div>
+            <div className="exploration-aside">
+              <figure className="agent-workflow" aria-labelledby="agent-workflow-title">
+                <figcaption id="agent-workflow-title">Conceptual agent workflow</figcaption>
+                <ol className="agent-steps" role="list">
+                  <li><strong>Task</strong><span>Define the goal and boundaries.</span><span className="agent-arrow" aria-hidden="true">↓</span></li>
+                  <li><strong>Context &amp; tools</strong><span>Provide information and scoped access.</span><span className="agent-arrow" aria-hidden="true">↓</span></li>
+                  <li><strong>Agent actions</strong><span>Work through steps and check outputs.</span><span className="agent-arrow" aria-hidden="true">↓</span></li>
+                  <li className="agent-review"><strong>Human review</strong><span>Inspect the result and decide what follows.</span></li>
+                </ol>
+                <p className="agent-workflow-note">Illustrative sequence, not a deployed system. Human approval can also be required before consequential actions.</p>
+              </figure>
+              <div className="exploration-example">
+                <h3>An example: this website</h3>
+                <p>Built with AI assistance, with me directing the content and design. The workflow included implementation, generated imagery, and automated browser checks.</p>
+              </div>
+            </div>
+          </div>
         </section>
 
         <section className="practice section wrap" aria-labelledby="practice-heading">
@@ -135,7 +188,7 @@ export default function Home() {
           <div className="contact-content"><div><h2 id="contact-heading">Have a role in mind?</h2><p>For conversations about enterprise architecture, product, or data, you can reach me directly.</p></div><div className="contact-links"><a className="email-link" href="mailto:hammamnash0@gmail.com">hammamnash0@gmail.com</a><a className="text-link" href="https://www.linkedin.com/in/hammamnash/" target="_blank" rel="noopener noreferrer">LinkedIn profile <span aria-hidden="true">↗</span><span className="sr-only"> (opens in a new tab)</span></a></div></div>
         </section>
       </main>
-      <footer className="site-footer wrap"><p>© {new Date().getFullYear()} Moh. Hammam Nashiruddin</p><span>Greater Jakarta, Indonesia</span><a href="#home">Back to top <span aria-hidden="true">↑</span></a></footer>
+      <footer className="site-footer wrap"><p>© {new Date().getFullYear()} Moh. Hammam Nashiruddin  · Build by GPT-6 Astra Running on Hermes Agent</p><span>Greater Jakarta, Indonesia</span><a href="#home">Back to top <span aria-hidden="true">↑</span></a></footer>
     </>
   );
 }
