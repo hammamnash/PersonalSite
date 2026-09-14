@@ -48,4 +48,6 @@ Navigation leads to actual Work, About, and Contact sections. Native details/sum
 
 Intro gives one focal headline. Selected work uses readable disclosure rows. Career chronology is denser. Tools/training use one flat panel. Contact closes with real destinations. Pill shapes denote interaction; tool labels are rectangular and noninteractive. Training is not represented as certification.
 
+The custom 404 reuses the floating nav, warm-to-cool horizon, dark pill CTA, and 24px white panel. Its sole visual is the owner-supplied `public/images/sdimages.jpg` meme, rendered at no more than its native 201 × 251 pixels, without cropping. Recovery copy precedes the image on mobile; desktop pairs the message with the compact image panel. “This page took a catnap” and the playful caption provide humor while “404 / Page not found” and two root-relative recovery links keep the error clear. No automatic redirect or new dependencies. The source is `app/not-found.tsx`; `out/404.html` is generated, not hand-maintained.
+
 Hover and focus feedback only; reduced-motion rules disable transitions. No scroll-gated content or perpetual animation. 44px interactive targets, keyboard focus, and mobile/zoom reflow are release checks. A preview noindex rule is not an access-control mechanism.

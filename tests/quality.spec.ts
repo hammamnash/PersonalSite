@@ -68,8 +68,15 @@ test("all local links and accordion controls work using keyboard", async ({ page
       expect(rect!.y).toBeLessThan(600);
     }
   }
+  for (const summary of await page.locator("summary").all()) {
+    if (!(await summary.locator("..").evaluate((element: HTMLDetailsElement) => element.open))) {
+      await summary.focus();
+      await page.keyboard.press("Enter");
+    }
+  }
   for (const link of await page.locator("a").all()) {
     await link.focus();
+    await expect(link).toBeFocused();
     expect(await link.evaluate((e) => getComputedStyle(e).outlineStyle)).toBe("solid");
   }
 });

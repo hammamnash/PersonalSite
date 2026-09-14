@@ -5,6 +5,10 @@ for (const width of [320, 768, 1440]) {
     await page.setViewportSize({ width, height: 960 });
     await page.goto("/");
     const experience = page.locator("details").filter({ has: page.getByText("Making enterprise architecture usable", { exact: true }) });
+    if (!(await experience.evaluate((element: HTMLDetailsElement) => element.open))) {
+      await experience.locator("summary").focus();
+      await page.keyboard.press("Enter");
+    }
     const image = experience.getByRole("img", { name: /TOGAF ADM cycle/ });
     await expect(image).toBeVisible();
     await image.scrollIntoViewIfNeeded();
@@ -26,6 +30,10 @@ for (const width of [320, 768, 1440]) {
     await page.keyboard.press("Enter");
     await expect(page).toHaveURL(/\/images\/experience\/togaf-archimate-core\.png$/);
     await page.goBack();
+    if (!(await experience.evaluate((element: HTMLDetailsElement) => element.open))) {
+      await experience.locator("summary").focus();
+      await page.keyboard.press("Enter");
+    }
     await image.scrollIntoViewIfNeeded();
     await experience.locator("figure").screenshot({ path: testInfo.outputPath(`ea-reference-${width}.png`) });
   });
