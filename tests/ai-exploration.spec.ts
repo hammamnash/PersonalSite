@@ -50,5 +50,5 @@ test("AI interests follow career history without replacing EA positioning", asyn
   expect(await exploration.evaluate((element) => ({
     previous: element.previousElementSibling?.id,
     nextHeading: element.nextElementSibling?.querySelector("h2")?.id,
-  }))).toEqual({ previous: "about", nextHeading: "practice-heading" });
+  }))).toEqual({ previous: "projects", nextHeading: "practice-heading" });
 });

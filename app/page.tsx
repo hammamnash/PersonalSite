@@ -33,7 +33,7 @@ export default function Home() {
   return (
     <>
       <a className="skip-link" href="#main">Skip to content</a>
-      <header className="site-header">
+      <header className="site-header home-header">
         <nav className="floating-nav" aria-label="Main navigation">
           <a className="wordmark" href="#home" aria-label="Hammam, back to introduction">
             <span className="monogram" aria-hidden="true">hn.</span>
@@ -42,6 +42,9 @@ export default function Home() {
           <div className="nav-links">
             <a href="#work">Work</a>
             <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#exploring-ai">Agentic AI</a>
+            <a href="#tools">Tools</a>
             <a className="nav-contact" href="#contact">Contact</a>
           </div>
         </nav>
@@ -135,6 +138,21 @@ export default function Home() {
           </div>
         </section>
 
+        <section className="about section wrap" id="about" aria-labelledby="about-heading">
+          <div className="about-intro">
+            <p className="section-label">The background | Work History</p>
+            <h2 id="about-heading">An analyst&apos;s curiosity.<br />A product mindset.</h2>
+            <p>I started with inventory data and warehouse operations, moved into product management, and now work in enterprise architecture consulting.</p>
+            <p>That gives me a practical starting point: understand the work people need to do before deciding how the technology should support it.</p></div>
+          <ol className="career-list" aria-label="Career history">
+            {career.map((job) => (
+              <li className="career-item" key={`${job.company}-${job.role}`}>
+                <p className="career-period">{job.period}</p><h3>{job.role}</h3><p className="career-company">{job.company}</p><p className="career-description">{job.description}</p>
+              </li>
+            ))}
+          </ol>
+        </section>
+
         <section className="projects section wrap" id="projects" aria-labelledby="projects-heading">
           <div className="section-heading">
             <p className="section-label">Web apps I&apos;m developing</p>
@@ -150,21 +168,6 @@ export default function Home() {
               </li>
             ))}
           </ul>
-        </section>
-
-        <section className="about section wrap" id="about" aria-labelledby="about-heading">
-          <div className="about-intro">
-            <p className="section-label">The background | Work History</p>
-            <h2 id="about-heading">An analyst&apos;s curiosity.<br />A product mindset.</h2>
-            <p>I started with inventory data and warehouse operations, moved into product management, and now work in enterprise architecture consulting.</p>
-            <p>That gives me a practical starting point: understand the work people need to do before deciding how the technology should support it.</p></div>
-          <ol className="career-list" aria-label="Career history">
-            {career.map((job) => (
-              <li className="career-item" key={`${job.company}-${job.role}`}>
-                <p className="career-period">{job.period}</p><h3>{job.role}</h3><p className="career-company">{job.company}</p><p className="career-description">{job.description}</p>
-              </li>
-            ))}
-          </ol>
         </section>
 
         <section className="exploration section wrap" id="exploring-ai" aria-labelledby="exploration-heading">
@@ -210,7 +213,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="practice section wrap" aria-labelledby="practice-heading">
+        <section className="practice section wrap" id="tools" aria-labelledby="practice-heading">
           <div className="practice-panel">
             <div><p className="section-label">In practice</p><h2 id="practice-heading">Frameworks, tools,<br />and conversations.</h2><p className="practice-intro">I work across modelling, analysis, and delivery, with the tool chosen for the task.</p></div>
             <dl className="tool-list">

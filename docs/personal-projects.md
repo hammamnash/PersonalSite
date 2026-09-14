@@ -1,6 +1,6 @@
 # Personal project pages
 
-The home page lists these projects in `/#projects`, separately from employment history. Each has a real static route and its own editable directory.
+The home page lists these projects in `/#projects`, immediately after The Background and before Agentic AI, separately from employment history. Each has a real static route and its own editable directory.
 
 | Project | Page to edit | URL |
 | --- | --- | --- |
