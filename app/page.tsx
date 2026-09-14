@@ -85,7 +85,7 @@ export default function Home() {
             <div><h2 id="work-heading">The work behind the perspective.</h2><p>From modelling an enterprise to improving the systems people use every day.</p></div>
           </div>
           <div className="work-list">
-            <details className="work-item" open>
+            <details className="work-item">
               <summary><span className="work-title">Making enterprise architecture usable</span><span className="work-index">01</span><span className="expand-mark" aria-hidden="true" /></summary>
               <div className="work-detail">
                 <div className="work-meta"><p>ATD Solution Indonesia</p><span>Enterprise architecture consulting</span></div>
