@@ -76,18 +76,16 @@ web_modules/
 
 # Next.js build output
 .next
-#out
+out/
+.nuxt
+dist
+.output
 
 # Browser verification artifacts
 playwright-report/
 test-results/
 .verification/
 .wrangler/
-
-# Nuxt.js build / generate output
-.nuxt
-dist
-.output
 
 # Gatsby files
 .cache/

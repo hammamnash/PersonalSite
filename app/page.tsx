@@ -1,4 +1,6 @@
 import Image from "next/image";
+import Link from "next/link";
+import { personalProjects } from "./projects/_data";
 
 const career = [
   {
@@ -82,7 +84,10 @@ export default function Home() {
         <section className="work section wrap" id="work" aria-labelledby="work-heading">
           <div className="section-heading">
             <p className="section-label">Selected experience</p>
-            <div><h2 id="work-heading">The work behind the perspective.</h2><p>From modelling an enterprise to improving the systems people use every day.</p></div>
+            <div>
+              <h2 id="work-heading">The work behind the perspective.</h2>
+              <p>From modelling an enterprise to improving the systems people use every day.</p>
+            </div>
           </div>
           <div className="work-list">
             <details className="work-item">
@@ -113,7 +118,10 @@ export default function Home() {
               </div>
             </details>
             <details className="work-item">
-              <summary><span className="work-title">Turning operational data into useful reporting</span><span className="work-index">03</span><span className="expand-mark" aria-hidden="true" /></summary>
+              <summary>
+                <span className="work-title">Turning operational data into useful reporting</span>
+                <span className="work-index">03</span>
+                <span className="expand-mark" aria-hidden="true" /></summary>
               <div className="work-detail">
                 <div className="work-meta"><p>Social Bella &amp; Ternaknesia</p><span>Inventory and data analytics</span></div>
                 <div className="work-body">
@@ -127,8 +135,29 @@ export default function Home() {
           </div>
         </section>
 
+        <section className="projects section wrap" id="projects" aria-labelledby="projects-heading">
+          <div className="section-heading">
+            <p className="section-label">Web apps I&apos;m developing</p>
+            <div><h2 id="projects-heading">Personal projects</h2><p>A separate space for my web app projects. Details coming soon.</p></div>
+          </div>
+          <ul className="project-list" role="list">
+            {Object.entries(personalProjects).map(([slug, project]) => (
+              <li key={slug}>
+                <Link className="project-link" href={`/projects/${slug}`} prefetch={false}>
+                  <span className="project-name">{project.title}</span>
+                  <span className="project-status">Details coming soon</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+
         <section className="about section wrap" id="about" aria-labelledby="about-heading">
-          <div className="about-intro"><p className="section-label">The background</p><h2 id="about-heading">An analyst&apos;s curiosity.<br />A product mindset.</h2><p>I started with inventory data and warehouse operations, moved into product management, and now work in enterprise architecture consulting.</p><p>That gives me a practical starting point: understand the work people need to do before deciding how the technology should support it.</p></div>
+          <div className="about-intro">
+            <p className="section-label">The background | Work History</p>
+            <h2 id="about-heading">An analyst&apos;s curiosity.<br />A product mindset.</h2>
+            <p>I started with inventory data and warehouse operations, moved into product management, and now work in enterprise architecture consulting.</p>
+            <p>That gives me a practical starting point: understand the work people need to do before deciding how the technology should support it.</p></div>
           <ol className="career-list" aria-label="Career history">
             {career.map((job) => (
               <li className="career-item" key={`${job.company}-${job.role}`}>
@@ -148,8 +177,18 @@ export default function Home() {
               <p>I&apos;m interested in AI agents that can work with tools, carry context between steps, and help complete tasks beyond a chat response.</p>
               <p>My enterprise architecture background shapes the questions I bring to this: where agents fit into a business process, what information they need, which systems they should access, and where people should stay in control.</p>
               <dl className="exploration-topics">
-                <div><dt>Hands-on experimentation</dt><dd>Exploring AI-assisted development and reusable instructions through personal projects.</dd></div>
-                <div><dt>Enterprise questions</dt><dd>Exploring how permissions, human review, and traceable actions can make agent workflows useful in an organizational setting.</dd></div>
+                <div>
+                  <dt>Hands-on experimentation</dt>
+                  <dd>Exploring AI-assisted development and reusable instructions through personal projects.</dd>
+                </div>
+                <div>
+                  <dt>Enterprise questions</dt>
+                  <dd>Exploring how permissions, human review, and traceable actions can make agent workflows useful in an organizational setting.</dd>
+                </div>
+                <div>
+                  <dt>Task Automation</dt>
+                  <dd>Enhancing how certan process and workflow can be automated by the AI, but still in scope of goals and control of the users.</dd>
+                </div>
               </dl>
             </div>
             <div className="exploration-aside">
@@ -175,8 +214,8 @@ export default function Home() {
           <div className="practice-panel">
             <div><p className="section-label">In practice</p><h2 id="practice-heading">Frameworks, tools,<br />and conversations.</h2><p className="practice-intro">I work across modelling, analysis, and delivery, with the tool chosen for the task.</p></div>
             <dl className="tool-list">
-              <div><dt>Architecture</dt><dd>TOGAF · ArchiMate<br />Bizzdesign Horizzon· Bizzdesign HOPEX · SAP LeanIX · Orbus iServer · Avolution ABACUS</dd></div>
-              <div><dt>Analysis &amp; delivery</dt><dd>SQL · Python · Power Query · Looker Studio · Power BI · Jira</dd></div>
+              <div><dt>Architecture</dt><dd>TOGAF · ArchiMate · COBIT<br />Bizzdesign Horizzon· Bizzdesign HOPEX · SAP LeanIX · Orbus iServer · Avolution ABACUS</dd></div>
+              <div><dt>Analysis &amp; delivery</dt><dd>SQL · MongoDB · Python · Power Query · Looker Studio · Power BI · Jira</dd></div>
               <div><dt>Selected training</dt><dd>TOGAF 10, ATD Learning (2023)<br />COBIT 2019, ATD Learning (2024)</dd></div>
               <div><dt>Languages</dt><dd>Indonesian, native · English, professional</dd></div>
             </dl>
@@ -185,10 +224,20 @@ export default function Home() {
 
         <section className="contact section wrap" id="contact" aria-labelledby="contact-heading">
           <p className="section-label">Get in touch</p>
-          <div className="contact-content"><div><h2 id="contact-heading">Have a role in mind?</h2><p>For conversations about enterprise architecture, product, or data, you can reach me directly.</p></div><div className="contact-links"><a className="email-link" href="mailto:hammamnash0@gmail.com">hammamnash0@gmail.com</a><a className="text-link" href="https://www.linkedin.com/in/hammamnash/" target="_blank" rel="noopener noreferrer">LinkedIn profile <span aria-hidden="true">↗</span><span className="sr-only"> (opens in a new tab)</span></a></div></div>
+          <div className="contact-content">
+            <div>
+              <h2 id="contact-heading">Have a role in mind?</h2>
+              <p>For conversations about enterprise architecture, product, or data, you can reach me directly.</p>
+            </div>
+            <div className="contact-links">
+              <a className="email-link" href="mailto:hammamnash0@gmail.com">hammamnash0@gmail.com</a>
+              <a className="email-link" href="mailto:me@hammamnash.site">me@hammamnash.site</a>
+              <a className="text-link" href="https://www.linkedin.com/in/hammamnash/" target="_blank" rel="noopener noreferrer">LinkedIn profile <span aria-hidden="true">↗</span><span className="sr-only"> (opens in a new tab)</span></a>
+            </div>
+          </div>
         </section>
       </main>
-      <footer className="site-footer wrap"><p>© {new Date().getFullYear()} Moh. Hammam Nashiruddin  · Build by GPT-6 Astra Running on Hermes Agent</p><span>Greater Jakarta, Indonesia</span><a href="#home">Back to top <span aria-hidden="true">↑</span></a></footer>
+      <footer className="site-footer wrap"><p>© {new Date().getFullYear()} Moh. Hammam Nashiruddin · Build by GPT-6 Astra Running on Hermes Agent</p><span>Greater Jakarta, Indonesia</span><a href="#home">Back to top <span aria-hidden="true">↑</span></a></footer>
     </>
   );
 }
