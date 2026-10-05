@@ -163,6 +163,60 @@ export default function Home() {
           <ul className="project-list" role="list">
             {Object.entries(personalProjects).map(([slug, project]) => {
               const isLive = project.status === "live";
+              const status = isLive ? "Live" : "In development";
+
+              if (project.body) {
+                return (
+                  <li key={slug}>
+                    <details className="project-item">
+                      <summary className="project-link">
+                        <span className="project-name">{project.title}</span>
+                        <span className="project-status">{status}</span>
+                        <span className="expand-mark" aria-hidden="true" />
+                      </summary>
+                      <div className="work-detail">
+                        <div className="work-body">
+                          {project.image ? (
+                            <figure className="work-visual work-visual-photo">
+                              <Image
+                                src={project.image.src}
+                                alt={project.image.alt}
+                                width={project.image.width}
+                                height={project.image.height}
+                                loading="lazy"
+                                unoptimized
+                              />
+                              <figcaption>
+                                <p>{project.image.caption}</p>
+                                <div className="visual-links">
+                                  <Link href={`/projects/${slug}`} prefetch={false}>Full project page</Link>
+                                  {isLive && project.url ? (
+                                    <a href={project.url} target="_blank" rel="noopener noreferrer">
+                                      Open live app <span aria-hidden="true">↗</span>
+                                      <span className="sr-only">(opens in a new tab)</span>
+                                    </a>
+                                  ) : null}
+                                </div>
+                              </figcaption>
+                            </figure>
+                          ) : null}
+                          {project.body.map((paragraph) => (
+                            <p key={paragraph}>{paragraph}</p>
+                          ))}
+                          {project.features ? (
+                            <ul className="skill-tags" aria-label={`${project.title} features`}>
+                              {project.features.map((feature) => (
+                                <li key={feature}>{feature}</li>
+                              ))}
+                            </ul>
+                          ) : null}
+                        </div>
+                      </div>
+                    </details>
+                  </li>
+                );
+              }
+
               return (
                 <li key={slug}>
                   {isLive && project.url ? (

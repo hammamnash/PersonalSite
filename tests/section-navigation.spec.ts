@@ -5,7 +5,12 @@ const sections = ["work", "about", "projects", "exploring-ai", "tools", "contact
 test("projects follow the background and navigation follows section order", async ({ page }) => {
   await page.goto("/");
   expect(await page.locator("main > section").evaluateAll((elements) => elements.map((element) => element.id))).toEqual(sections);
-  await expect(page.locator("#projects").getByRole("link")).toHaveCount(5);
+  // Runees expands into an accordion, so the four projects without a write-up
+  // stay the only direct links in the section.
+  const projects = page.locator("#projects");
+  await expect(projects.getByRole("link")).toHaveCount(4);
+  await expect(projects.locator("details")).toHaveCount(1);
+  await expect(projects.locator("details summary")).toContainText("Runees");
   const navigation = page.getByRole("navigation", { name: "Main navigation" });
   expect(await navigation.locator('.nav-links a').evaluateAll((links) => links.map((link) => link.getAttribute("href")))).toEqual(sections.map((id) => `#${id}`));
 });

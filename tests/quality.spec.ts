@@ -90,7 +90,7 @@ test("public content remains usable without JavaScript", async ({ browser }) => 
   const page = await context.newPage();
   await page.goto("/");
   await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
-  const row = page.locator("details").last();
+  const row = page.locator("#work details").last();
   await row.locator("summary").click();
   await expect(row).toHaveAttribute("open", "");
   await expect(row.getByText(/I built reporting pipelines/)).toBeVisible();

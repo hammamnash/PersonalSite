@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { personalProjects } from "../_data";
 
 const project = personalProjects.runees;
+const { image } = project;
 
 export const metadata: Metadata = {
   title: `${project.title} | Hammam Nashiruddin`,
@@ -26,6 +28,21 @@ export default function RuneesPage() {
           <h2 id="runees-heading">Live run data from a Garmin watch, without extra hardware.</h2>
           <p>Runees connects a Garmin Forerunner to a live treadmill dashboard over Bluetooth LE. It shows heart rate, pace, cadence, distance, and timer in real time while you run.</p>
           <p>When a session ends, the app writes a valid .FIT activity file — FileId, Activity, Session, Lap, and Record records — that imports into Garmin Connect, so treadmill runs stay in your training history.</p>
+          {image ? (
+            <figure className="work-visual work-visual-photo">
+              <Image
+                src={image.src}
+                alt={image.alt}
+                width={image.width}
+                height={image.height}
+                loading="eager"
+                unoptimized
+              />
+              <figcaption>
+                <p>{image.caption}</p>
+              </figcaption>
+            </figure>
+          ) : null}
           <ul className="skill-tags" aria-label="Runees stack">
             <li>Next.js 14</li>
             <li>Tailwind CSS</li>

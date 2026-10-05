@@ -257,3 +257,17 @@ html:has(.home-header) { scroll-padding-top: 10rem; }
 .nav-links .nav-contact[aria-current="location"] {
   background: #3f3f3f;
 }
+
+/* Personal-project accordion — shares the experience accordion's detail classes. */
+.project-item summary { list-style: none; cursor: pointer; }
+.project-item summary::-webkit-details-marker { display: none; }
+.project-item[open] .expand-mark::after { display: none; }
+.project-item .project-link { grid-template-columns: minmax(0, 1fr) auto; }
+.project-item .project-link .project-name { grid-column: 1 / -1; }
+@media (min-width: 800px) {
+  .project-item .project-link { grid-template-columns: minmax(0, 1fr) auto auto; }
+  .project-item .project-link .project-name { grid-column: auto; }
+}
+
+/* The project body is a grid, so the figure's own margin would double the gap. */
+.project-body .work-visual { margin-bottom: 0; }
