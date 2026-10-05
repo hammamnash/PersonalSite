@@ -11,8 +11,8 @@ export default function ProjectPlaceholder({ title }: { title: string }) {
       </div>
       <section className="project-content wrap" aria-labelledby="project-status">
         <div className="project-notice">
-          <h2 id="project-status">Details coming soon</h2>
-          <p>I&apos;ll add more about this project here.</p>
+          <h2 id="project-status">In development</h2>
+          <p>This project is still under development. I&apos;ll share details here when it&apos;s ready to show.</p>
           <div className="hero-actions">
             <Link className="button button-primary" href="/#projects" prefetch={false}>Back to personal projects</Link>
             <Link className="text-link" href="/" prefetch={false}>Back to portfolio</Link>

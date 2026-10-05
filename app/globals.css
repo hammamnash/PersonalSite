@@ -123,6 +123,10 @@ h1 span { color: #454545; }
 .project-notice { max-width: 48rem; padding: 1.5rem; border: 1px solid var(--line); border-radius: var(--radius-panel); background: var(--surface); }
 .project-notice h2 { font-size: 1.5rem; line-height: 1.35; }
 .project-notice > p { margin-top: .75rem; color: var(--muted); }
+.project-body { max-width: 48rem; display: grid; gap: 1rem; }
+.project-body > p { color: var(--muted); max-width: 52ch; }
+.project-body .section-label { margin-bottom: 0; }
+.project-note { color: var(--muted); font-size: .875rem; max-width: 52ch; }
 .about { display: grid; gap: 2.5rem; }
 .about-intro > p:not(.section-label) { color: var(--muted); max-width: 43ch; margin-top: 1.25rem; }
 .career-list { list-style: none; margin: 0; padding: 0; }
@@ -232,4 +236,24 @@ html:has(.home-header) { scroll-padding-top: 10rem; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
+}
+
+/* Orientation feedback: reading progress + current-section highlight. */
+.reading-progress {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 25;
+  height: 3px;
+  background: var(--ink);
+  transform: scaleX(var(--progress, 0));
+  transform-origin: 0 50%;
+  pointer-events: none;
+}
+
+.nav-links a[aria-current="location"] {
+  background: #efefef;
+}
+
+.nav-links .nav-contact[aria-current="location"] {
+  background: #3f3f3f;
 }

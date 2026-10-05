@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { personalProjects } from "./projects/_data";
+import { ReadingProgress } from "./_components/reading-progress";
 
 const career = [
   {
@@ -32,6 +33,7 @@ const career = [
 export default function Home() {
   return (
     <>
+      <ReadingProgress />
       <a className="skip-link" href="#main">Skip to content</a>
       <header className="site-header home-header">
         <nav className="floating-nav" aria-label="Main navigation">
@@ -156,17 +158,27 @@ export default function Home() {
         <section className="projects section wrap" id="projects" aria-labelledby="projects-heading">
           <div className="section-heading">
             <p className="section-label">Web apps I&apos;m developing</p>
-            <div><h2 id="projects-heading">Personal projects</h2><p>A separate space for my web app projects. Details coming soon.</p></div>
+            <div><h2 id="projects-heading">Personal projects</h2><p>A separate space for my web app projects. Runees is live; the rest are in development.</p></div>
           </div>
           <ul className="project-list" role="list">
-            {Object.entries(personalProjects).map(([slug, project]) => (
-              <li key={slug}>
-                <Link className="project-link" href={`/projects/${slug}`} prefetch={false}>
-                  <span className="project-name">{project.title}</span>
-                  <span className="project-status">Details coming soon</span>
-                </Link>
-              </li>
-            ))}
+            {Object.entries(personalProjects).map(([slug, project]) => {
+              const isLive = project.status === "live";
+              return (
+                <li key={slug}>
+                  {isLive && project.url ? (
+                    <a className="project-link" href={project.url} target="_blank" rel="noopener noreferrer">
+                      <span className="project-name">{project.title}</span>
+                      <span className="project-status">Live <span aria-hidden="true">↗</span><span className="sr-only"> (opens in a new tab)</span></span>
+                    </a>
+                  ) : (
+                    <Link className="project-link" href={`/projects/${slug}`} prefetch={false}>
+                      <span className="project-name">{project.title}</span>
+                      <span className="project-status">In development</span>
+                    </Link>
+                  )}
+                </li>
+              );
+            })}
           </ul>
         </section>
 
@@ -190,7 +202,7 @@ export default function Home() {
                 </div>
                 <div>
                   <dt>Task Automation</dt>
-                  <dd>Enhancing how certan process and workflow can be automated by the AI, but still in scope of goals and control of the users.</dd>
+                  <dd>Enhancing how certain process and workflow can be automated by the AI, but still in scope of goals and control of the users.</dd>
                 </div>
               </dl>
             </div>
@@ -236,11 +248,12 @@ export default function Home() {
               <a className="email-link" href="mailto:hammamnash0@gmail.com">hammamnash0@gmail.com</a>
               <a className="email-link" href="mailto:me@hammamnash.site">me@hammamnash.site</a>
               <a className="text-link" href="https://www.linkedin.com/in/hammamnash/" target="_blank" rel="noopener noreferrer">LinkedIn profile <span aria-hidden="true">↗</span><span className="sr-only"> (opens in a new tab)</span></a>
+              <a className="text-link" href="https://github.com/hammamnash" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span><span className="sr-only"> (opens in a new tab)</span></a>
             </div>
           </div>
         </section>
       </main>
-      <footer className="site-footer wrap"><p>© {new Date().getFullYear()} Moh. Hammam Nashiruddin · Build by GPT-6 Astra Running on Hermes Agent</p><span>Greater Jakarta, Indonesia</span><a href="#home">Back to top <span aria-hidden="true">↑</span></a></footer>
+      <footer className="site-footer wrap"><p>© {new Date().getFullYear()} Moh. Hammam Nashiruddin</p><span>Greater Jakarta, Indonesia</span><a href="#home">Back to top <span aria-hidden="true">↑</span></a></footer>
     </>
   );
 }

@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<style>
+  @font-face {
+    font-family: "DM Sans";
+    src: url("../node_modules/@fontsource/dm-sans/files/dm-sans-latin-500-normal.woff2") format("woff2");
+    font-weight: 500;
+    font-style: normal;
+  }
+  * { margin: 0; box-sizing: border-box; }
+  html, body { width: 1200px; height: 630px; }
+  body {
+    font-family: "DM Sans", system-ui, sans-serif;
+    background: linear-gradient(115deg, #f4e3d2 0%, #f5f0ec 46%, #e4eaf6 100%);
+    color: #161616;
+    padding: 64px 72px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  .top { display: flex; justify-content: space-between; align-items: baseline; }
+  .monogram { font-size: 40px; font-weight: 500; letter-spacing: -0.09em; line-height: 1; }
+  .domain { font-size: 22px; font-weight: 500; color: #525252; }
+  .name { margin-top: auto; font-size: 26px; font-weight: 500; color: #525252; }
+  h1 { margin-top: 12px; font-size: 56px; font-weight: 500; letter-spacing: -0.035em; line-height: 1.06; max-width: 22ch; }
+  .sub { margin-top: 24px; font-size: 20px; color: #525252; font-weight: 500; }
+  .violet { position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: linear-gradient(90deg, transparent 15%, rgba(107,98,242,.4) 50%, transparent 85%); }
+</style>
+</head>
+<body>
+  <div class="top">
+    <span class="monogram">hn.</span>
+    <span class="domain">hammamnash.site</span>
+  </div>
+  <p class="name">Moh. Hammam Nashiruddin</p>
+  <h1>Making sense of business and technology.</h1>
+  <p class="sub">EA consulting · Product management · Data analytics</p>
+  <div class="violet"></div>
+</body>
+</html>

@@ -13,6 +13,10 @@ test("projects follow the background and navigation follows section order", asyn
 for (const width of [320, 375, 768, 1440]) {
   test(`all section links are visible and usable at ${width}px`, async ({ page }, testInfo) => {
     await page.setViewportSize({ width, height: 900 });
+    // Reduced motion makes anchor navigation instant (see globals.css), so
+    // sequential clicks can't interrupt each other's smooth-scroll animation
+    // and get dropped mid-flight. Landing positions are identical.
+    await page.emulateMedia({ reducedMotion: "reduce" });
     await page.goto("/");
     await page.evaluate(() => document.fonts.ready);
     const navigation = page.getByRole("navigation", { name: "Main navigation" });

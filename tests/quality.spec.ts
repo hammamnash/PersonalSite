@@ -38,6 +38,10 @@ for (const width of [320, 375, 768, 1280, 1440]) {
 }
 
 test("all local links and accordion controls work using keyboard", async ({ page }) => {
+  // Reduced motion makes anchor navigation instant (see globals.css), so
+  // sequential clicks can't interrupt each other's smooth-scroll animation
+  // and get dropped mid-flight. Landing positions are identical.
+  await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/");
   await page.keyboard.press("Tab");
   await expect(page.getByRole("link", { name: "Skip to content" })).toBeFocused();
@@ -107,7 +111,7 @@ test("200 percent content zoom reflows without overflow", async ({ page }) => {
   await expect(page.getByRole("link", { name: "Contact", exact: true })).toBeVisible();
 });
 
-test("reduced motion, preview metadata, and local font loading", async ({ page, request }) => {
+test("reduced motion, indexable metadata, and local font loading", async ({ page, request }) => {
   await page.emulateMedia({ reducedMotion: "reduce", colorScheme: "dark" });
   const remote: string[] = [];
   page.on("request", (req) => { if (!req.url().startsWith("http://127.0.0.1:3100")) remote.push(req.url()); });
@@ -115,13 +119,22 @@ test("reduced motion, preview metadata, and local font loading", async ({ page, 
   await page.evaluate(() => document.fonts.ready);
   expect(remote).toEqual([]);
   await expect(page).toHaveTitle("Hammam Nashiruddin | Enterprise Architecture Consultant");
-  await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", "noindex, nofollow");
+  await expect(page.locator('meta[name="robots"]')).toHaveCount(0);
+  await expect(page.locator('meta[property="og:title"]')).toHaveAttribute("content", "Hammam Nashiruddin | Enterprise Architecture Consultant");
+  await expect(page.locator('meta[property="og:image"]')).toHaveAttribute("content", /https:\/\/hammamnash\.site\/og\.png$/);
+  await expect(page.locator('meta[name="twitter:card"]')).toHaveAttribute("content", "summary_large_image");
   expect(await page.locator("h1").evaluate((e) => getComputedStyle(e).fontFamily)).toContain("DM Sans");
   expect(await page.locator("h2").first().evaluate((e) => getComputedStyle(e).fontFamily)).toContain("Geist");
   expect(await page.locator(".button").evaluate((e) => getComputedStyle(e).transitionDuration)).toBe("0s");
   expect(await page.locator("html").evaluate((e) => getComputedStyle(e).colorScheme)).toBe("light");
   const robots = await request.get("/robots.txt");
-  expect(await robots.text()).toContain("Disallow: /");
+  expect(await robots.text()).toContain("Allow: /");
+  expect(await robots.text()).not.toContain("Disallow");
   const icon = await request.get("/icon.svg");
   expect(icon.status()).toBe(200);
+  // Placeholder project pages stay noindex until real content replaces them.
+  await page.goto("/projects/nyilehno");
+  await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", "noindex, nofollow");
 });
+
+
